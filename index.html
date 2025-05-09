@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Shop</title>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Shop</h1>
+    <ul>
+        <li>
+            <h2>Product 1</h2>
+            <p>Price: $10</p>
+            <button>Add to cart</button>
+        </li>
+        <li>
+            <h2>Product 2</h2>
+            <p>Price: $20</p>
+            <button>Add to cart</button>
+        </li>
+        <li>
+            <h2>Product 3</h2>
+            <p>Price: $5</p>
+            <button>Add to cart</button>
+        </li>
+    </ul>
+    <h2>Cart</h2>
+    <ul id="cart">
+    </ul>
+    <script>
+        const cart = document.getElementById('cart');
+        const products = document.querySelectorAll('li button');
+        products.forEach(button => {
+            button.addEventListener('click', () => {
+                const product = button.parentElement;
+                const name = product.querySelector('h2').textContent;
+                const price = product.querySelector('p').textContent.match(/\d+/)[0];
+                const item = document.createElement('li');
+                item.textContent = `${name} - ${price}`;
+                cart.appendChild(item);
+            });
+        });
+    </script>
+</body>
+</html>
